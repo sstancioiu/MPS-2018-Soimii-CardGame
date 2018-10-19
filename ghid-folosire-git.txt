@@ -1,0 +1,72 @@
+## Recunosc ca nu e bine explicat mai ales daca nu ati mai lucrat cu gitu ##
+
+Comenzi utile pentru GIT si cum o sa lucram
+
+git clone https://github.com/Theodorul/MPS-2018-Soimii-CardGame.git
+#cloneaza repositotoryul in folderul curent
+
+git status
+#info despre ce fisiere sunt modificate, pe ce branch suntem,
+#ce fisiere sunt adaugate la commit
+#e un fel de 'ls' al gitului
+
+git log
+#arata istoricul commiturilor
+
+Cum o sa lucram:
+
+1)Vrem sa adaugam noile modificari de pe repo
+    a)Suntem pe branchul master.
+    git pull
+    nu ar trebui sa avem conflicte pentru ca o sa facem modificarile pe alte branchuri
+
+    b)Sutem pe un branch de al nostru
+    git fetch
+    git rebase -i origin/master
+    (e posibil sa apara conflicte care trebuie rezolvate)
+
+2)Vrem sa facem noi niste modificari
+    Facem un branch
+    git branch "feature/<nume>/<ce modifici>"
+    ex: git branch "feature/sstancioiu/git-guide"
+
+    git branch -> listeaza toate branchurile si pe ce branch suntem momentan
+    Ne mutam pe branch
+    git checkout <nume branch>
+
+    git status / git branch ->pentru verificare
+
+    Adaugam fisiere, modificam fisiere, stergem etc
+    Apoi: git add <nume fisier> (pentru toate fisierele )
+    sau 
+          git add . (si adaugam tot)
+
+    git status (o sa apara cu verde ca sunt adaugate)
+
+    git commit -m "mesaj"
+
+    git log (o sa apara in istoric)
+
+3) Facem publish la branchu nostru
+
+    git push -u origin <branch>
+    eu folosesc optiunea de publish branch din visual studio code,
+     dar ar trebui sa mearga si comanda asta
+
+    Apoi o sa apara pe github branchu nostru
+    Facem review, eventuale sqashuri la commituri si apoi facem merge
+
+    daca mai facem modificari la branch: facem commituri
+    si apoi doar
+        git push --force
+
+    recomand sa avem doar un commit per branch asa ca:
+    a) facem reset
+        git reset --soft HEAD~<nr de commituri> (apar in git log)
+
+        git status
+        git log (pentru verificare)
+        git commit -m "mesaj"
+
+    b) sau facem asta online pe github
+
