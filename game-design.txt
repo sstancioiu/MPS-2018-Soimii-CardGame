@@ -1,0 +1,41 @@
+Tipuri carti
+Carte jucator {
+	nume;
+	tip (atacant, fundas etc)
+	puncte atac;
+	puncte aparare;
+	club;
+	nationala;
+}
+
+Carte functionale alege si pastreaza 5 -> {
+	cartonas galben: injumatateste punctele unei carti
+	cartonas rosu: faci 0/0 o carte
+	transfer jucator: schimb intre jucatori intre adversari
+	accidentare: scoti cartea unui adversar de pe teren
+	schimbare: intre o carte de pe teren si una din mana (care iti apartin)
+	dopaj: adaugi jumatate din punctele unei carti ca puncte pt cartea aia (jumatate din atac si din aparare)
+	test-antidoping: elimina punctele de la dopaj (al tuturor cartilor)
+	proba video: elimina cartonasele galbene si rosii de pe un jucator
+	50/50: aduaga 1-2 puncte sau scade 1-2 puncte pentru o carte TODO:gaseste alt nume
+	ceata: scade punctele jucatorilor din atac la 0 (ambele echipe) 
+}
+
+Carti lider {
+	efect permanent: sa adauge o carte de schimbare bonus, 
+	efect ce se poate activa:
+}
+
+Json carti:
+	Carte jucator: e descris mai sus
+	Carte functionala: {
+				index carte;
+				nume jucator pe care se aplica
+}
+Carte lider: TBD
+
+Comunicare client - server
+
+
+
+

@@ -1,0 +1,8 @@
+14:00 - 15 octombrie
+    -am impartit roluri
+    -creat repository pe github
+    -stabilit platforma/limbaj de programare (javascript, sockets.io, html)
+13:30 - 21 octombrie
+    -clarificat comunicare intre componentele aplicatiei (client-server)
+    -stabilit cum o sa mearga efectiv jocul
+    -creat carti (o parte din ele)
