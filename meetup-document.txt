@@ -6,3 +6,7 @@
     -clarificat comunicare intre componentele aplicatiei (client-server)
     -stabilit cum o sa mearga efectiv jocul
     -creat carti (o parte din ele)
+14:00 - 22 octombrie
+    -clarificat documente necesare
+    -am continuat sa cream carti de joc
+    
