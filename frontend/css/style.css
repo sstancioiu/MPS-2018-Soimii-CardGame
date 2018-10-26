@@ -1,0 +1,66 @@
+.card {
+    width: 250px;
+    padding-top: 10px;
+    margin-right:5px;
+    margin-left: 30px;
+    margin-bottom:15px;
+    height: 350px;
+    background-color: #E6E6FA;
+    border-radius: 5%;
+    box-shadow: 1px 3px 1px 3px black;
+    opacity: 0.95;
+    cursor: pointer;
+    text-align: center;
+    /* padding: 5%; */
+}
+
+.defence {
+    float: right;
+}
+
+.cards {
+    padding-left: 50px;
+}
+
+body {
+    background-image:url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3286430.jpg");
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align:center;
+    color: white;
+}
+
+#announce {
+    text-align:center;
+    color: white;
+}
+
+.gameLobby #StartGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    display: none;
+}
+
+.row {
+    height: 80px;
+}
+
+.clicked {
+    box-shadow: 0px 0px 18px greenyellow;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#select {
+    text-align:center;
+    color: white;
+}
+
+#sumbitCards {
+    margin-left: 47%;
+    margin-bottom: 10px;
+}
