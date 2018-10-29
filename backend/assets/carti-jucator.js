@@ -390,14 +390,14 @@ module.exports = {
 			"defence": 4,
 			"club": "Juventus",
 			"country": "Argentina" 
-        }
-        {
-            "name": "SON",
-            "type": "FW",
-            "attack": 10,
-            "defence": 5,
-            "club": "Tottenham Hotspur F.C.",
-            "country": "South Korea"
-        }
+        	},
+		{
+		    "name": "SON",
+		    "type": "FW",
+		    "attack": 10,
+		    "defence": 5,
+		    "club": "Tottenham Hotspur F.C.",
+		    "country": "South Korea"
+		}
 	]
 }
