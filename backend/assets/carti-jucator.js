@@ -2,7 +2,7 @@ module.exports = {
 
 	cards : [
 		{
-			"name": "Ciarnau",
+			"name": "Clara",
 			"type": "FW",
 			"attack": 10,
 			"defence": 10,
