@@ -4,7 +4,11 @@
   "description": "MPS, Proiect1, CardGame",
   "main": "carti-jucator.js",
   "scripts": {
+    "start": "node server/server.js"
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.9.0"
   },
   "repository": {
     "type": "git",
