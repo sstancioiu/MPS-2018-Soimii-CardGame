@@ -1,12 +1,57 @@
+______________________________________________________________
 14:00 - 15 octombrie
-    -am impartit roluri
-    -creat repository pe github
-    -stabilit platforma/limbaj de programare (javascript, sockets.io, html)
+First meeting of the Hawks
+===== Agendă =====
+ToDos:
+* sa ne cunoastem
+* sa impartim roluri
+* sa ne gandim la ce limbaje am putea folosi
+===== Participanți =====
+* toata echipa
+===== Discuții & actiuni =====
+* am creat repository pe github si board pe trello
+* am stabilit sa facem o pagina web in care va rula jocul
+* vom lucra in javascript
+______________________________________________________________
 13:30 - 21 octombrie
-    -clarificat comunicare intre componentele aplicatiei (client-server)
-    -stabilit cum o sa mearga efectiv jocul
-    -creat carti (o parte din ele)
+Second meeting of the Hawks
+===== Agendă =====
+ToDos:
+* sa intelegem cum comunica componentele aplicatiei
+* sa intelegem jocul din cerinta de pe ocw
+* sa impartim taskuri
+===== Participanți =====
+* toata echipa
+===== Discuții & actiuni =====
+* mr TeamLead ne-a prezentat cum merge javascriptu cu jquerry, socket.io
+* am facut designu teoretic la cartile jucator
+* am impartit taskuri legate de design carti
+______________________________________________________________
 14:00 - 22 octombrie
-    -clarificat documente necesare
-    -am continuat sa cream carti de joc
-    
+Third meeting of the Hawks
+===== Agendă =====
+ToDos:
+* explicat la toata echipa cum o sa lucram cu gitu
+* continuam cu designu cartilor
+* intrebat 'product owner' despre documentele necesare la prezentarea proiectului
+===== Participanți =====
+* toata echipa
+===== Discuții & actiuni =====
+* am stabilit cum folosim gitu intru-un mod eficient,
+am sumarizat asta intr-un txt postat pe respository
+* am facut designu teoretic la cartile jucator
+* am impartit taskuri legate de design carti
+______________________________________________________________
+14:00 - 29 octombrie
+Fourth meeting of the Hawks
+===== Agendă =====
+ToDos:
+* urcam proiectul pe heroku
+* impartit taskuri
+* intrebat 'product owner' despre documentele necesare la prezentarea proiectului
+===== Participanți =====
+* toata echipa
+===== Discuții & actiuni =====
+* am urcat proiectul pe heroku
+* am impartit niste taskuri pe partea de frontend
+* am clarificat niste probleme legate de GIT
