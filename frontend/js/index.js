@@ -69,6 +69,20 @@ function appendCardsToDom (cardList) {
     }
 }
 
+function showNumberOfSelectedCards (cardsSelected) {
+    $('.cards-number').text(`Selected ${cardsSelected.length} cards`);
+
+    let gkNum = cardsSelected.filter(card => card.type.includes("GK")).length;
+    let dfNum = cardsSelected.filter(card => card.type.includes("DF")).length;
+    let mfNum = cardsSelected.filter(card => card.type.includes("MF")).length;
+    let fwNum = cardsSelected.filter(card => card.type.includes("FW")).length;
+
+    $('.cards-number').append(`<br>GK: ${gkNum}/1<br>`);
+    $('.cards-number').append(`DF: ${dfNum}/6<br>`);
+    $('.cards-number').append(`MF: ${mfNum}/6<br>`);
+    $('.cards-number').append(`FW: ${fwNum}/6`);
+}
+
 function submitCards (socket) {
     $('#sumbitCards').click(function () {
         if (submitCounter === 0) {
@@ -78,7 +92,7 @@ function submitCards (socket) {
             } else if (cardsSelected.length < 11) {
                 alert("You haven't selected enough cards");
             } else {
-                alert("You have select too many cards");
+                alert("You have selected too many cards");
             }
         }
     })
@@ -93,7 +107,7 @@ function submitSpecial (socket) {
             } else if (cardsSelected.length < 5) {
                 alert("You haven't selected enough cards");
             } else {
-                alert("You have select too many cards");
+                alert("You have selected too many cards");
             }
         }
     })
@@ -108,7 +122,7 @@ function submitLeader (socket) {
             } else if (cardsSelected.length < 1) {
                 alert("You haven't selected enough cards");
             } else {
-                alert("You have select too many cards");
+                alert("You have selected too many cards");
             }
         }
     })
@@ -122,11 +136,23 @@ function cardSelector (cards) {
             cardsSelected.splice(position,1);
             $(this).removeClass('clicked');
             console.log(cardsSelected);
+        } else if (cardsSelected.length < 11) {
+            let numberOfSameType = cardsSelected.filter(
+                card => card.type.includes(cards[pos].type)
+            ).length;
+            if (cards[pos].type.includes("GK") && numberOfSameType >= 1) {
+                alert("Too many GK");
+            } else if (numberOfSameType >= 6) {
+                alert("Too many " + cards[pos].type);
+            } else {
+                cardsSelected.push(cards[pos]);
+                $(this).addClass('clicked');
+                console.log(cardsSelected);
+            }
         } else {
-            cardsSelected.push(cards[pos]);
-            $(this).addClass('clicked');
-            console.log(cardsSelected);
+            alert("You have selected too many cards");
         }
+        showNumberOfSelectedCards(cardsSelected);
     });
 }
 

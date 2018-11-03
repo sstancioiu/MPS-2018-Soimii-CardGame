@@ -1,9 +1,9 @@
 module.exports = {
 
-	cards : [
-		{
+    cards : [
+        {
             "name": "Yellow-card",
-            "description": "Halves points of one opponent's card"   
+            "description": "Halves points of one opponent's card"
         },
         {
             "name": "Red-card",
@@ -11,7 +11,7 @@ module.exports = {
         },
         {
             "name": "Player-transfer",
-            "description": "Switch between one of your card and your opponent's card" 
+            "description": "Switch between one of your card and your opponent's card"
         },
         {
             "name": "Injury",
@@ -41,5 +41,5 @@ module.exports = {
             "name": "Fog",
             "description": "Decrease all cards points, of both players, placed on attack position to 0"
         }
-	]
+    ]
 }
