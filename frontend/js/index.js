@@ -20,7 +20,7 @@ $(document).ready(() => {
             $('.gameLobby').hide();
             $('#cards').show();
             appendCardsToDom(playerCards);
-            cardSelector(playerCards);
+            playerCardSelector(playerCards);
             submitCards(socket);
         })
     });
@@ -128,7 +128,7 @@ function submitLeader (socket) {
     })
 }
 
-function cardSelector (cards) {
+function playerCardSelector (cards) {
     $('.card').click(function () {
         let pos = cards.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
         if (cardsSelected.includes(cards[pos])) {
@@ -206,9 +206,25 @@ function makeSpecialCard (cardInfo) {
             </div>`
 }
 
-function renderBoard (){
-    return `<div class='row'>
+function cardSelector (cards) {
+    $('.card').click(function () {
+        let pos = cards.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
+        if (cardsSelected.includes(cards[pos])) {
+            let position = cardsSelected.indexOf(cards[pos]);
+            cardsSelected.splice(position,1);
+            $(this).removeClass('clicked');
+            console.log(cardsSelected);
+        } else {
+            cardsSelected.push(cards[pos]);
+            $(this).addClass('clicked');
+            console.log(cardsSelected);
+        }
+    });
+}
+
+// function renderBoard (){
+//     return `<div class='row'>
             
     
-                </div>`
-}
+//                 </div>`
+// }
