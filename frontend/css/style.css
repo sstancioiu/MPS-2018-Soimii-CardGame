@@ -64,3 +64,14 @@ h1 {
     margin-left: 47%;
     margin-bottom: 10px;
 }
+
+.cards-number {
+    top: 0;
+    right: 0;
+    background-color: white;
+    opacity: 0.8;
+    font-size: 170%;
+    position: fixed;
+    z-index: 1;
+    text-align: right;
+}
