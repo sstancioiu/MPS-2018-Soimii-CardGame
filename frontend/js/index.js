@@ -70,7 +70,7 @@ function appendCardsToDom (cardList) {
 }
 
 function showNumberOfSelectedCards (cardsSelected) {
-    $('.cards-number').text(`Selected ${cardsSelected.length} cards`);
+    $('.cards-number').text(`Selected ${cardsSelected.length} player cards`);
 
     let gkNum = cardsSelected.filter(card => card.type.includes("GK")).length;
     let dfNum = cardsSelected.filter(card => card.type.includes("DF")).length;
@@ -89,6 +89,7 @@ function submitCards (socket) {
             if (cardsSelected.length === 11) {
                 submitCounter++;
                 socket.emit('cardsSubmit', cardsSelected);
+                $('#select').text('Please select 5 cards!');
             } else if (cardsSelected.length < 11) {
                 alert("You haven't selected enough cards");
             } else {
@@ -104,6 +105,7 @@ function submitSpecial (socket) {
             if (cardsSelected.length === 5) {
                 submitCounter++;
                 socket.emit('submitSpecial', cardsSelected);
+                $('#select').text('Please select one leader card!');
             } else if (cardsSelected.length < 5) {
                 alert("You haven't selected enough cards");
             } else {
