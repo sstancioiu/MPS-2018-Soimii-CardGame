@@ -7,6 +7,9 @@ $(document).ready(() => {
     submitCounter = 0;
     cardsInHand = [];
     differentCard = false;
+    myScore = 0;
+    enemyScore = 0;
+    turn = 1;
 
 
     socket.on('connect', function () {
@@ -56,9 +59,44 @@ $(document).ready(() => {
             $('#hand').append(makeHandCard(aux));
         }
         showCard();
-        playCard();
+        playCard(socket);
         showBoardCards();
     })
+    socket.on('Round1', function(object) {
+        showCard();
+        playCard(socket);
+        showBoardCards();
+        console.log(object);
+        $('#myScore').text(object.player.score);
+        $('#enemyScore').text(object.enemyScore);
+        manageBoard (object, socket);
+        showEnemyBoardCards(object.enemyBoard);
+    })
+    socket.on('Round1Enemy', function(object) {
+        showCard();
+        playCard(socket);
+        showBoardCards();
+        console.log(object);
+        $('#myScore').text(object.myScore);
+        $('#enemyScore').text(object.enemyScore);
+        $('#e-goalkeeper').empty();
+        for (let aux of object.enemyBoard.goalKeeper) {
+            $('#e-goalkeeper').append(makeHandCard(aux));
+        }
+        $('#e-defence').empty();
+        for (let aux of object.enemyBoard.defenceLine) {
+            $('#e-defence').append(makeHandCard(aux));
+        }
+        $('#e-mid').empty();
+        for (let aux of object.enemyBoard.midLine) {
+            $('#e-mid').append(makeHandCard(aux));
+        }
+        $('#e-attack').empty();
+        for (let aux of object.enemyBoard.attackLine) {
+            $('#e-attack').append(makeHandCard(aux));
+        }
+        showEnemyBoardCards(object.enemyBoard);
+    });
 
     socket.on('disconnect', function () {
         //alert("Too many players");
@@ -80,6 +118,11 @@ function appendCardsToDom (cardList) {
             $('#cards > .row').append(makeCard(card));
         }
     }
+}
+
+function manageBoard (object, socket) {
+    
+    console.log(socket.id);
 }
 
 function showNumberOfSelectedCards (cardsSelected) {
@@ -244,6 +287,15 @@ function cardSelector (cards) {
 function renderBoard (){
     return `<div class="row" style="height:100%;">
                 <div class="col-md-3" id="info">
+                    <div class="row" style="margin: 20px;">
+                        <div class="col-md-4">
+                            <button id="endTurn">End Turn</button>
+                        </div>
+                        <div class="col-md-2" id="myScore">${myScore}</div>
+                        <div class="col-md-2" id="enemyScore">${enemyScore}</div>
+                        <div class="col-md-2" id="turn">${turn}</div>
+                        <div class="col-md-2"></div>
+                    </div>
                     <div class="cardShowed"></div>
                 </div>
                 <div class="col-md-9" id="board">
@@ -253,7 +305,7 @@ function renderBoard (){
 
 function makeHandCard (cardInfo) {
     return `<div class="mini-card" id=${cardInfo.name} alt=${cardInfo.name}>
-                <img width="50" height="50" src="${cardInfo.miniCard}" />
+                <img width="60" height="65" src="${cardInfo.miniCard}" />
             </div>`;
 }
 
@@ -294,7 +346,31 @@ function showBoardCards () {
     }));
 }
 
-function playCard () {
+function showEnemyBoardCards (object) {
+    let pos;
+    $('#e-mid').on('click', '.mini-card', (function () {
+        $('#info > .cardShowed').empty();
+        pos = object.midLine.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
+        $('#info > .cardShowed').append(makeCard(object.midLine[pos]));
+    }));
+    $('#e-goalkeeper').on('click', '.mini-card', (function () {
+        $('#info > .cardShowed').empty();
+        pos = object.goalKeeper.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
+        $('#info > .cardShowed').append(makeCard(object.goalKeeper[pos]));
+    }));
+    $('#e-defence').on('click', '.mini-card', (function () {
+        $('#info > .cardShowed').empty();
+        pos = object.defenceLine.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
+        $('#info > .cardShowed').append(makeCard(object.defenceLine[pos]));
+    }));
+    $('#e-attack').on('click', '.mini-card', (function () {
+        $('#info > .cardShowed').empty();
+        pos = object.attackLine.map(function(e) { return e.name; }).indexOf($(this).attr('alt'));
+        $('#info > .cardShowed').append(makeCard(object.attackLine[pos]));
+    }));
+}
+
+function playCard (socket) {
     let pos;
     $('.mini-card').click(function () {
         differentCard = true;
@@ -306,6 +382,7 @@ function playCard () {
                     console.log(pos);
                     console.log(cardsInHand[pos]);
                     differentCard = false;
+                    socket.emit('startRound1', {card: cardsInHand[pos], lane: "goalkeeper", cards: cardsInHand});
                     $(`#${cardsInHand[pos].name}`).empty();
                     $('#m-goalkeeper').append(makeHandCard(cardsInHand[pos]));
                     cardsInHand.splice(pos,1);
@@ -325,6 +402,7 @@ function playCard () {
                     differentCard = false;
                     console.log(pos);
                     console.log(cardsInHand[pos]);
+                    socket.emit('startRound1', {card: cardsInHand[pos], lane: "defence", cards: cardsInHand});
                     $(`#${cardsInHand[pos].name}`).empty();
                     $('#m-defence').append(makeHandCard(cardsInHand[pos]));
                     cardsInHand.splice(pos,1);
@@ -345,6 +423,7 @@ function playCard () {
                     differentCard = false;
                     console.log(pos);
                     console.log(cardsInHand[pos]);
+                    socket.emit('startRound1', {card: cardsInHand[pos], lane: "mid", cards: cardsInHand});
                     $(`#${cardsInHand[pos].name}`).empty();
                     $('#m-mid').append(makeHandCard(cardsInHand[pos]));
                     cardsInHand.splice(pos,1);
@@ -366,6 +445,7 @@ function playCard () {
                     console.log(pos);
                     console.log(cardsInHand[pos]);
                     $(`#${cardsInHand[pos].name}`).empty();
+                    socket.emit('startRound1', {card: cardsInHand[pos], lane: "attack", cards: cardsInHand});
                     $('#m-attack').append(makeHandCard(cardsInHand[pos]));
                     cardsInHand.splice(pos,1);
                     //$(this).remove();
@@ -392,5 +472,5 @@ function generateBoard () {
     $('#board').append(`<div class="row" id="m-mid"></div>`);
     $('#board').append(`<div class="row" id="m-defence"></div>`);
     $('#board').append(`<div class="row" id="m-goalkeeper"></div>`);
-    $('.board-game').append(`<div class="row" id="hand"></div>`);
+    $('.board-game').append(`<div class="row" id="hand" style="margin-top: 15px;"></div>`);
 }

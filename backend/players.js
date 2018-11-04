@@ -3,6 +3,7 @@ let initPlayers = function (io) {
     players[Object.keys(io.sockets.sockets)[0]] = {
         name: "Player 1",
         hand: [],
+        score: 0,
         board : {
             attackLine : [],
             midLine: [],
@@ -14,6 +15,7 @@ let initPlayers = function (io) {
     players[Object.keys(io.sockets.sockets)[1]] = {
         name: "Player 2",
         hand: [],
+        score: 0,
         board : {
             attackLine : [],
             midLine: [],
