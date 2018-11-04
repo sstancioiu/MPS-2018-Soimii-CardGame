@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
         io.emit('startGame', cards.cards);
         players = playersManagement.initPlayers(io);
         console.log(players);
+        console.log(Object.keys(players));
     }
 
     socket.on('cardsSubmit', (cards) => {
@@ -56,7 +57,49 @@ io.on('connection', (socket) => {
         console.log(cards);
         leaderCardsSubmited = true;
         io.to(`${socket.id}`).emit('boardRender', "Bine boss");
-      })
+      });
+
+      socket.on('startRound1', (recv) => {
+        players[socket.id].hand.splice(0, players[socket.id].hand.length);
+        for (let aux of recv.cards) {
+            players[socket.id].hand.push(aux);
+        }
+        if (recv.lane === "goalkeeper") {
+            players[socket.id].board.goalKeeper.push(recv.card);
+        } else if (recv.lane === "defence") {
+            players[socket.id].board.defenceLine.push(recv.card);
+        } else if (recv.lane === "mid") {
+            players[socket.id].board.midLine.push(recv.card);
+        } else if (recv.lane === "attack") {
+            players[socket.id].board.attackLine.push(recv.card);
+        }
+        players[socket.id].score =  players[socket.id].score + recv.card.attack + recv.card.defence;
+        if (socket.id === Object.keys(players)[0]) {
+            io.to(`${socket.id}`).emit('Round1', {
+                player: players[socket.id], 
+                enemyBoard: players[Object.keys(players)[1]].board,
+                enemyScore: players[Object.keys(players)[1]].score
+            });
+            socket.broadcast.emit('Round1Enemy', {
+                myBoard: players[Object.keys(players)[1]].board,
+                myScore: players[Object.keys(players)[1]].score,
+                enemyBoard: players[socket.id].board,
+                enemyScore: players[socket.id].score
+            });
+        } else if (socket.id === Object.keys(players)[1]) {
+            io.to(`${socket.id}`).emit('Round1', {
+                player: players[socket.id], 
+                enemyBoard: players[Object.keys(players)[0]].board,
+                enemyScore: players[Object.keys(players)[0]].score
+            });
+            socket.broadcast.emit('Round1Enemy', {
+                myBoard: players[Object.keys(players)[0]].board,
+                myScore: players[Object.keys(players)[0]].score,
+                enemyBoard: players[socket.id].board,
+                enemyScore: players[socket.id].score
+            });
+        }
+    });
 
     socket.on('disconnect', () => {
         console.log('Disconnected from server');
