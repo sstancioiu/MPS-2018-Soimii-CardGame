@@ -1,10 +1,10 @@
 .card {
-    width: 250px;
+    width: 193px;
     padding-top: 10px;
     margin-right:5px;
-    margin-left: 30px;
+    margin-left: 8px; 
     margin-bottom:15px;
-    height: 350px;
+    height: 285px;
     color: white;
     background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/04/38/11/41584be550de96d.jpg?fbclid=IwAR0fMdUaOdKISz-YJ2ljV1JH4QXCq1q6ahmk9QzYWUFPRg_U03-LDD10MCs");
     border-radius: 5%;
@@ -13,10 +13,6 @@
     cursor: pointer;
     text-align: center;
     /* padding: 5%; */
-}
-
-.defence {
-    float: right;
 }
 
 .cards {
@@ -41,6 +37,10 @@ h2 {
     color:white;
 }
 
+#name {
+    margin: 14px;
+}
+
 #announce {
     text-align:center;
     color: white;
@@ -61,7 +61,7 @@ h2 {
 }
 
 .row {
-    height: 80px;
+    height: 60px;
 }
 
 .clicked {
@@ -104,4 +104,60 @@ h2 {
     position: fixed;
     z-index: 1;
     text-align: right;
+}
+
+.board-game {
+    height: 80%;
+}
+
+#board {
+    /* border: 2px solid black; */
+}
+
+#e-goalkeeper {
+    border: 2px solid black;
+    height: 68px;
+    border-bottom: none;
+}
+
+#e-defence {
+    border: 2px solid black;
+    height: 68px;
+    border-bottom: none;
+}
+
+#e-mid {
+    border: 2px solid black;
+    height: 68px;
+    border-bottom: none;
+}
+
+#e-attack {
+    border: 2px solid black;
+    height: 68px;
+    margin-bottom: 20px;
+}
+
+#m-goalkeeper {
+    border: 2px solid black;
+    height: 68px;
+}
+
+#m-defence {
+    border: 2px solid black;
+    height: 68px;
+    border-bottom: none;
+}
+
+#m-mid {
+    border: 2px solid black;
+    height: 68px;
+    border-bottom: none;
+}
+
+#m-attack {
+    border: 2px solid black;
+    height: 68px;
+    margin-top: 20px;
+    border-bottom: none;
 }
