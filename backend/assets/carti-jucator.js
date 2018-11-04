@@ -229,8 +229,8 @@ module.exports = {
         {
             "name": "ALTPOPE",
             "type": "GK",
-            "attack": 7,
-            "defence": 2,
+            "attack": 2,
+            "defence": 7,
             "club": "Burnley FC",
             "country": "England",
             "image": "https://www.thairath.co.th/media/T18CT60ObSbLrsQ6mSbsNTEhx39rdvZpMA5H0fKBx6NV65gL3KVoEJL.jpg"
@@ -238,7 +238,7 @@ module.exports = {
         {
             "name": "PICKFORD",
             "type": "GK",
-            "attack": 8,
+            "attack": 3,
             "defence": 7,
             "club": "Everton FC",
             "country": "England",
@@ -301,8 +301,8 @@ module.exports = {
         {
             "name": "CUADRADO",
             "type": "GK",
-            "attack": 7,
-            "defence": 4,
+            "attack": 4,
+            "defence": 7,
             "club": "CD Once Caldas",
             "country": "Colombia",
             "image": "https://cdn.images.express.co.uk/img/dynamic/67/590x/Arsenal-news-Juan-Cuadrado-857344.jpg"
@@ -312,15 +312,15 @@ module.exports = {
             "type": "GK",
             "attack": 1,
             "defence": 3,
-            "club": "Costa Rica",
-            "country": "LD Alajuelense",
+            "club": "LD Alajuelense",
+            "country": "Costa Rica",
             "image": "https://s.hs-data.com/bilder/spieler/gross/172614.jpg"
         },
         {
             "name": "MOREIRA",
             "type": "GK",
-            "attack": 6,
-            "defence": 4,
+            "attack": 4,
+            "defence": 6,
             "club": "CS Herediano",
             "country": "Costa Rica",
             "image": "https://www.diez.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=xvQQiHWO_UAxKTKNExUAzs$daE2N3K4ZzOUsqbU5sYvMVA83pdMYzLe0vcbHxtNiWCsjLu883Ygn4B49Lvm9bPe2QeMKQdVeZmXF$9l$4uCZ8QDXhaHEp3rvzXRJFdy0KqPHLoMevcTLo3h8xh70Y6N_U_CryOsw6FTOdKL_jpQ-&CONTENTTYPE=image/jpeg"
@@ -328,8 +328,8 @@ module.exports = {
         {
             "name": "LIVAKOVIC",
             "type": "GK",
-            "attack": 8,
-            "defence": 4,
+            "attack": 4,
+            "defence": 8,
             "club": "GNK Dinamo Zagreb",
             "country": "Croatia",
             "image": "https://i.pinimg.com/originals/dc/b2/32/dcb232179a14516673b34fae56c6800f.jpg"

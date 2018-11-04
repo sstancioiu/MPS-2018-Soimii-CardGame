@@ -70,7 +70,7 @@ function appendCardsToDom (cardList) {
 }
 
 function showNumberOfSelectedCards (cardsSelected) {
-    $('.cards-number').text(`Selected ${cardsSelected.length} cards`);
+    $('.cards-number').text(`Selected ${cardsSelected.length} player cards`);
 
     let gkNum = cardsSelected.filter(card => card.type.includes("GK")).length;
     let dfNum = cardsSelected.filter(card => card.type.includes("DF")).length;
@@ -89,6 +89,7 @@ function submitCards (socket) {
             if (cardsSelected.length === 11) {
                 submitCounter++;
                 socket.emit('cardsSubmit', cardsSelected);
+                $('#select').text('Please select 5 cards!');
             } else if (cardsSelected.length < 11) {
                 alert("You haven't selected enough cards");
             } else {
@@ -104,6 +105,7 @@ function submitSpecial (socket) {
             if (cardsSelected.length === 5) {
                 submitCounter++;
                 socket.emit('submitSpecial', cardsSelected);
+                $('#select').text('Please select one leader card!');
             } else if (cardsSelected.length < 5) {
                 alert("You haven't selected enough cards");
             } else {
@@ -168,23 +170,23 @@ function makeCard (cardInfo) {
                           <h3 id="type">${cardInfo.type} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h3>
                       </div>
                       <div class="col-xs-6">
-                          <h3 id="club">&nbsp;${cardInfo.club}</h3>
+                          <h4 id="club">&nbsp;${cardInfo.club}</h4>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-xs-4">
                           <div class="atack">
-                              <h3 class="bold">A ${cardInfo.attack}</h2>
+                              <h3 class="bold">Attack <br>${cardInfo.attack}</h2>
                           </div>
                       </div>
                       <div class="col-xs-3">
                            <div class="country">
-                                <h4 class="bold">${cardInfo.country}</h4>
+                                <h5 class="bold">${cardInfo.country}</h5>
                            </div>
                       </div>
                       <div class="col-xs-4 defence">
                           <div class="defence">
-                              <h3 class="bold">D ${cardInfo.defence}</h2>
+                              <h3 class="bold">Defence <br>${cardInfo.defence}</h2>
                           </div>
                       </div>
                   </div>
