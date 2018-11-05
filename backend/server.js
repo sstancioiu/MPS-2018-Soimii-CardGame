@@ -24,6 +24,7 @@ let randomDigits = [];
 let randomDigits2 = [];
 let sendedCards = [];
 let sendedCards2 = [];
+let playerEnded;
 
 app.use(express.static(publicPath));
 

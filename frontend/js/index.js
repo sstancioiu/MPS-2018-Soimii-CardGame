@@ -1,5 +1,6 @@
-$(document).ready(() => {  
-    let socket = io();
+let socket;
+$(document).ready(() => {
+    socket = io();
     cardsSelected = [];
     playerCards = [];
     specialCards = [];
@@ -462,8 +463,15 @@ function playCard (socket) {
     });
 }
 
+function endbuttonPressed() {
+    socket.emit('endTurnPressed', socket.id);
+}
+
 function generateBoard () {
     $('.board-game').append(renderBoard());
+    $('#endTurn').click(function () {
+        endbuttonPressed();
+    })
     $('#board').append(`<div class="row" id="e-goalkeeper"></div>`);
     $('#board').append(`<div class="row" id="e-defence"></div>`);
     $('#board').append(`<div class="row" id="e-mid"></div>`);
