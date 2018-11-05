@@ -172,16 +172,6 @@ module.exports = {
             "miniCard": "https://imgur.com/S4lGzYP.png"
         },
         {
-            "name": "OSPINA",
-            "type": "GK",
-            "attack": 3,
-            "defence": 8,
-            "club": "Arsenal FC",
-            "country": "Colombia",
-            "image": "https://metrouk2.files.wordpress.com/2018/08/gettyimages-1013330414.jpg?quality=80&strip=all&zoom=1&resize=644%2C476",
-            "miniCard": "https://imgur.com/i6IxCMO.png"
-        },
-        {
             "name": "VARGAS",
             "type": "GK",
             "attack": 5,
@@ -222,16 +212,6 @@ module.exports = {
             "miniCard": "https://imgur.com/nxg9TIn.png"
         },
         {
-            "name": "JOHNSSON",
-            "type": "GK",
-            "attack": 1,
-            "defence": 8,
-            "club": "EA Guingamp",
-            "country": "Sweden",
-            "image": "https://static.actu.fr/uploads/2016/11/kalle-johnsson-guingamp-eag.jpg",
-            "miniCard": "https://imgur.com/vZQIhsN.png"
-        },
-        {
             "name": "KHALIFA",
             "type": "FW",
             "attack": 7,
@@ -250,26 +230,6 @@ module.exports = {
             "country": "Uruguay",
             "image": "https://www.thepeninsulaqatar.com/uploads/2018/01/08/post_main_cover_fit//7e774a7872c7a801be5976a01c7c3d49c1f5c326.jpg",
             "miniCard": "https://imgur.com/tsbCJC0.png"
-        },
-        {
-            "name": "ALTPOPE",
-            "type": "GK",
-            "attack": 7,
-            "defence": 2,
-            "club": "Burnley FC",
-            "country": "England",
-            "image": "https://www.thairath.co.th/media/T18CT60ObSbLrsQ6mSbsNTEhx39rdvZpMA5H0fKBx6NV65gL3KVoEJL.jpg",
-            "miniCard": "https://imgur.com/3F0ywzF.png"
-        },
-        {
-            "name": "PICKFORD",
-            "type": "GK",
-            "attack": 8,
-            "defence": 7,
-            "club": "Everton FC",
-            "country": "England",
-            "image": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8cb5cd0a-6753-11e8-996c-7589300f03c9.jpg?crop=1432%2C805%2C614%2C101&resize=685",
-            "miniCard": "https://imgur.com/YCYc4EW.png"
         },
         {
             "name": "FELLAINI",

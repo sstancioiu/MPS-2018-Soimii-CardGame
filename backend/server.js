@@ -3,8 +3,8 @@ const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
 const uniqueRandom = require('unique-random');
-const rand = uniqueRandom(0, 47);
-const rand2 = uniqueRandom(0, 47);
+const rand = uniqueRandom(0, 43);
+const rand2 = uniqueRandom(0, 43);
 
 const publicPath = path.join(__dirname, './../frontend');
 const cards = require('./assets/carti-jucator');
