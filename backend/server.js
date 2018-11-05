@@ -17,6 +17,7 @@ let players = {};
 let playerCardsSubmited = false;
 let specialCardsSubmited = false;
 let leaderCardsSubmited = false;
+let playerEnded;
 
 app.use(express.static(publicPath));
 
@@ -98,6 +99,26 @@ io.on('connection', (socket) => {
                 enemyBoard: players[socket.id].board,
                 enemyScore: players[socket.id].score
             });
+        }
+    });
+
+    socket.on('endTurnPressed', (id) => {
+        if (playerEnded === undefined) {
+            playerEnded = id;
+        }
+
+        if (playerEnded !== undefined && playerEnded !== id) {
+            if (players[Object.keys(players)[0]].score > players[Object.keys(players)[1]].score) {
+                io.sockets.emit('Winner', players[Object.keys(players)[0]].name + ' won this round!')
+                playerEnded = undefined;
+            } else if (players[Object.keys(players)[1]].score > players[Object.keys(players)[0]].score) {
+                io.sockets.emit('Winner', players[Object.keys(players)[1]].name + ' won this round');
+                playerEnded = undefined;
+            } else {
+                playerEnded = undefined;
+                let winner = Math.floor(Math.random() * 2 + 1);
+                io.sockets.emit('Winner', players[Object.keys(players)[winner]].name + ' won this round');
+            }
         }
     });
 

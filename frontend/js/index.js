@@ -1,5 +1,6 @@
-$(document).ready(() => {  
-    let socket = io();
+let socket;
+$(document).ready(() => {
+    socket = io();
     cardsSelected = [];
     playerCards = [];
     specialCards = [];
@@ -97,6 +98,16 @@ $(document).ready(() => {
         }
         showEnemyBoardCards(object.enemyBoard);
     });
+
+    socket.on('Winner', function (message) {
+        alert(message);
+        turn = turn + 1;
+        myScore = 0;
+        enemyScore = 0;
+        playerCards = []
+        showBoardCards()
+        renderBoard()
+    })
 
     socket.on('disconnect', function () {
         //alert("Too many players");
@@ -462,8 +473,15 @@ function playCard (socket) {
     });
 }
 
+function endbuttonPressed() {
+    socket.emit('endTurnPressed', socket.id);
+}
+
 function generateBoard () {
     $('.board-game').append(renderBoard());
+    $('#endTurn').click(function () {
+        endbuttonPressed();
+    })
     $('#board').append(`<div class="row" id="e-goalkeeper"></div>`);
     $('#board').append(`<div class="row" id="e-defence"></div>`);
     $('#board').append(`<div class="row" id="e-mid"></div>`);
