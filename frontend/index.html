@@ -1,4 +1,4 @@
-<! DOCTYPE <!DOCTYPE html>
+﻿<! DOCTYPE <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,12 +17,20 @@
 <body>
     <div class="container-fluid">
         <div class="gameLobby">
-            <h1 id="welcome">Welcome to the Hawks Card Game!</h1>
+            <h1 id="welcome">We welcome you to the <br><img src="assets/Name.png" width="300"><br> Card Game</h1>
             <h2 id="announce">Currently waiting for the second player to join the game...</h2>
+            <ul id="loadingBar">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <button id="StartGame">StartGame</button>
             <h3 id="madeBy">Made by the Hawks</h3>
         </div>
-        <div id="cards" hidden>
+        
+        <div id="cards" >
             <div class="cards-number">No cards selected</div>
             <h1 id="select">Please select 11 cards</h1>
             <button id="sumbitCards">Submit</button>

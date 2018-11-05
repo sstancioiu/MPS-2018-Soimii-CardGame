@@ -24,6 +24,10 @@ body {
     background-attachment: fixed;
 }
 
+button {
+    cursor: pointer;
+}
+
 h1 {
     font-size: 64px;
     margin-top: 64px;
@@ -60,6 +64,63 @@ h2 {
     display: none;
 }
 
+.gameLobby {
+    background-color: white;
+    background-image: url(https://t3.ftcdn.net/jpg/00/65/37/74/240_F_65377404_Cam2G5jDJBVjZqARfymVditJoKOYndmp.jpg);
+    background-size: cover;
+    padding: 30px;
+    border-radius: 10%;
+}
+
+#welcome, #announce {
+    color: #00041c;
+}
+
+#loadingBar {
+    display: flex;
+    padding-left: 40%;
+}
+
+    #loadingBar li {
+        list-style: none;
+        width: 40px;
+        height: 40px;
+        background-image: url(https://image.shutterstock.com/image-vector/black-white-soccer-ball-pattern-260nw-407248888.jpg);
+        background-size: cover;
+        border-radius: 50%;
+        animation: animate 1.6s ease-in-out infinite;
+    }
+
+@keyframes animate {
+    0%, 40%, 100% {
+        transform: scale(0.2);
+    }
+
+    20% {
+        transform: scale(0.8);
+    }
+}
+
+#loadingBar li:nth-child(1) {
+    animation-delay: -1.4s;
+}
+
+#loadingBar li:nth-child(2) {
+    animation-delay: -1.2s;
+}
+
+#loadingBar li:nth-child(3) {
+    animation-delay: -1s;
+}
+
+#loadingBar li:nth-child(4) {
+    animation-delay: -0.8s;
+}
+
+#loadingBar li:nth-child(5) {
+    animation-delay: -0.6s;
+}
+
 .row {
     height: 60px;
 }
@@ -71,7 +132,7 @@ h2 {
 }
 
 #select {
-    text-align:center;
+    text-align: center;
     color: white;
 }
 
@@ -93,7 +154,28 @@ h2 {
     font-size: 16px;
     margin-left: 47%;
     margin-bottom: 10px;
+    border-bottom: 5px solid #173814;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: linear-gradient(#469e3f,#255b20);
+    color: white;
+    border-radius: 10px;
+    transition: 150ms ease;
+    text-align: center;
+    
+    font-weight: bold;
+    outline: none;
 }
+
+    #sumbitCards:active {
+        border-bottom: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background: linear-gradient(#255b20, #469e3f);
+        transition: 150ms ease;
+    }
 
 .cards-number {
     top: 0;
