@@ -99,16 +99,6 @@ $(document).ready(() => {
         showEnemyBoardCards(object.enemyBoard);
     });
 
-    socket.on('Winner', function (message) {
-        alert(message);
-        turn = turn + 1;
-        myScore = 0;
-        enemyScore = 0;
-        playerCards = []
-        showBoardCards()
-        renderBoard()
-    })
-
     socket.on('disconnect', function () {
         //alert("Too many players");
         console.log('User was disconnected');
@@ -120,7 +110,7 @@ function appendCardsToDom (cardList) {
         for (let card of cardList) {
             $('#cards > .row').append(makeSpecialCard(card));
         }
-    } else if (cardList.length === 2) {
+    } else if (cardList.length === 5) {
         for (let card of cardList) {
             $('#cards > .row').append(makeSpecialCard(card));
         }
