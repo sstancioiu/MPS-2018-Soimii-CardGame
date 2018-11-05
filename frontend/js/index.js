@@ -99,6 +99,17 @@ $(document).ready(() => {
         showEnemyBoardCards(object.enemyBoard);
     });
 
+    socket.on('Winner', function (message) {
+        alert(message);
+        turn = turn + 1;
+        myScore = 0;
+        enemyScore = 0;
+        playerCards = []
+        showBoardCards()
+        renderBoard()
+    });
+
+
     socket.on('disconnect', function () {
         //alert("Too many players");
         console.log('User was disconnected');
@@ -145,6 +156,7 @@ function submitCards (socket) {
         if (submitCounter === 0) {
             if (cardsSelected.length === 11) {
                 submitCounter++;
+                $('#select').text('Please select 5 cards!');
                 for(let aux of cardsSelected)
                     cardsInHand.push(aux);
                 playerCardsSelected = cardsSelected;
@@ -163,6 +175,7 @@ function submitSpecial (socket) {
         if (submitCounter === 1) {
             if (cardsSelected.length === 5) {
                 submitCounter++;
+                $('#select').text('Please select one leader card!');
                 for(let aux of cardsSelected)
                     cardsInHand.push(aux);
                 specialCardsSelected = cardsSelected;
@@ -471,7 +484,7 @@ function generateBoard () {
     $('.board-game').append(renderBoard());
     $('#endTurn').click(function () {
         endbuttonPressed();
-    })
+    });
     $('#board').append(`<div class="row" id="e-goalkeeper"></div>`);
     $('#board').append(`<div class="row" id="e-defence"></div>`);
     $('#board').append(`<div class="row" id="e-mid"></div>`);

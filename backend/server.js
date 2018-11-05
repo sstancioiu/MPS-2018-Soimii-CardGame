@@ -118,6 +118,26 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('endTurnPressed', (id) => {
+        if (playerEnded === undefined) {
+            playerEnded = id;
+        }
+
+        if (playerEnded !== undefined && playerEnded !== id) {
+            if (players[Object.keys(players)[0]].score > players[Object.keys(players)[1]].score) {
+                io.sockets.emit('Winner', players[Object.keys(players)[0]].name + ' won this round!')
+                playerEnded = undefined;
+            } else if (players[Object.keys(players)[1]].score > players[Object.keys(players)[0]].score) {
+                io.sockets.emit('Winner', players[Object.keys(players)[1]].name + ' won this round');
+                playerEnded = undefined;
+            } else {
+                playerEnded = undefined;
+                let winner = Math.floor(Math.random() * 2 + 1);
+                io.sockets.emit('Winner', players[Object.keys(players)[winner]].name + ' won this round');
+            }
+        }
+    });
+
     socket.on('disconnect', () => {
         console.log('Disconnected from server');
     });
