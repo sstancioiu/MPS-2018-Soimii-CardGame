@@ -24,6 +24,7 @@
     "express": "^4.16.4",
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "unique-random": "^2.0.0"
   }
 }

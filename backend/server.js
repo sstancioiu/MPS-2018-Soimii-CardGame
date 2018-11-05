@@ -2,12 +2,15 @@ const path = require('path');
 const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
+const uniqueRandom = require('unique-random');
+const rand = uniqueRandom(0, 47);
+const rand2 = uniqueRandom(0, 47);
 
 const publicPath = path.join(__dirname, './../frontend');
 const cards = require('./assets/carti-jucator');
 const specialCards = require('./assets/carti-speciale');
 const playersManagement = require('./players');
-const leaderCards = [specialCards.cards[0], specialCards.cards[1]];
+const leaderCards = require('./assets/carti-leader');
 
 const port = process.env.PORT || 3000;
 let app = express();
@@ -17,19 +20,32 @@ let players = {};
 let playerCardsSubmited = false;
 let specialCardsSubmited = false;
 let leaderCardsSubmited = false;
+let randomDigits = [];
+let randomDigits2 = [];
+let sendedCards = [];
+let sendedCards2 = [];
 
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
     console.log('New user connected');
     console.log(io.engine.clientsCount);
+    for (let i = 0; i < 24; i++) {
+        randomDigits[i] = rand();
+        randomDigits2[i] = rand2();
+    }
     if (tooManyPlayers()) {
         socket.disconnect(true);
         console.log(`Disconnected socket`);
     }
 
     if (isGameReady()) {
-        io.emit('startGame', cards.cards);
+        for (let i = 0; i < 24; i++) {
+            sendedCards[i] = cards.cards[randomDigits[i]];
+            sendedCards2[i] = cards.cards[randomDigits2[i]];
+        }
+        io.to(`${socket.id}`).emit('startGame', sendedCards);
+        socket.broadcast.emit('startGame', sendedCards2);
         players = playersManagement.initPlayers(io);
         console.log(players);
         console.log(Object.keys(players));
@@ -46,7 +62,7 @@ io.on('connection', (socket) => {
             players[socket.id].hand.push(card);
         }
         specialCardsSubmited = true;
-        io.to(`${socket.id}`).emit('sendLeader', leaderCards);
+        io.to(`${socket.id}`).emit('sendLeader', leaderCards.cards);
       })
 
       socket.on('submitLeader', (cards) => {
@@ -117,5 +133,11 @@ let tooManyPlayers = function () {
 server.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
+
+function randomDataSet(dataSetSize, minValue, maxValue) {
+    return new Array(dataSetSize).fill(0).map(function(n) {
+      return Math.random() * (maxValue - minValue) + minValue;
+    });
+}
 
 //console.log(cards);
